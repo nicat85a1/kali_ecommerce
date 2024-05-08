@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kur sizi salamlayir</title>
+    <h2>Mehsullar</h2>
+
+    {% for instance in products %}
+    <h4>{{instance.id}}</h4>
+        <h4>{{instance.name}}</h4>
+        <h4>{{instance.price}}</h4>
+        <h4>{{instance.created_at}}</h4>
+    {% endfor %}
+
+</head>
+<body>
+</body>
+</html>
