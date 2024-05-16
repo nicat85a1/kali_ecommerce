@@ -6,4 +6,8 @@ class RegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username','password', 'first_name','last_name']
+        fields = ['username','password', 'first_name','last_name', 'email']
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label="istifadeci adi:", max_length=30,required=True)
+    password = forms.CharField(label="sifre:", max_length=30, widget=forms.PasswordInput)
