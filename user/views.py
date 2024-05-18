@@ -6,15 +6,29 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 # Create your views here.
     
-def register_view(request):
+"""def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('home')
-        else:
-            messages.error(request, "bu kullanici artik mevcut")
-            form = RegisterForm()
+
+    else:
+        form = RegisterForm()
+    context = {
+        'form': form
+    }
+    return render(request, "user/register.html", context)"""
+
+def register_view(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            password = form.cleaned_data.get('password')
+            user.set_password(password)
+            user.save()
+            return redirect('home')
     else:
         form = RegisterForm()
     context = {
