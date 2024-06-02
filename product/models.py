@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=100)
+    image = models.ImageField("product_image",null=True,blank=True)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     price = models.IntegerField()

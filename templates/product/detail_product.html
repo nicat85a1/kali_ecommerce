@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+</head>
+<body>
+    <h2>Product Detail</h2>
+
+    <h4>Id: {{product.id}}</h4>
+    <h4>Mehsulun adi: {{product.name}}</h4>
+    <h4>Tarix: {{product.created_at}}</h4>
+    <h4>User: {{product.user.username}}</h4>
+    <h4>Price: {{product.price}}</h4>
+    {%if instance.image %}
+    <img src="{{ product.image.url }}" alt="Hamster" width="500" height="600">
+    {%endif%}
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'home' %}">Back to product list</a>
+</body>
+</html>

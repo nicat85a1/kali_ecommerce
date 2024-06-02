@@ -11,3 +11,10 @@ class RegisterForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField(label="istifadeci adi:", max_length=30,required=True)
     password = forms.CharField(label="sifre:", max_length=30, widget=forms.PasswordInput)
+
+
+class ProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']

@@ -1,3 +1,4 @@
+{% comment %}
 {% extends 'base/layout.html' %}
 {%block content%}
 
@@ -27,27 +28,37 @@
     </table>
 </div>
 {%endblock%}
+{% endcomment %}
 
 
 
-{%comment%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Kur sizi salamlayir</title>
+    <h3>Salam {{request.user.get_full_name}}</h3>
     <h2>Mehsullar</h2>
 
     {% for instance in products %}
-    <h4>{{instance.id}}</h4>
-        <h4>{{instance.name}}</h4>
-        <h4>{{instance.price}}</h4>
-        <h4>{{instance.created_at}}</h4>
-        <h4>{{instance.user.username}}</h4>
+    <h4>Id: {{instance.id}}</h4>
+        <h4>Mehsulun adi: {{instance.name}}</h4>
+        <h4>Tarix: {{instance.created_at}}</h4>
+        <h4>User: {{instance.user.username}}</h4>
+
+        {%if instance.image %}
+        <img src="{{ instance.image.url }}" alt="Hamster" width="500" height="600">
+        <h4>--------------------------------</h4>
+        {%endif%}
+        <br>
+        <a href="{% url 'detail_product' instance.id%}">more detail</a>
+        <br>
+        {%if user == instance.user%}
+        <a href="{% url 'delete_product' instance.id%}">Delete</a>
+        {%endif%}
     {% endfor %}
 
 </head>
 <body>
 </body>
 </html>
-{% endcomment %}

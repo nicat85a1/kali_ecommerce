@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+</head>
+<body>
+    <h2>Update Product</h2>
+    <h3>Salam {{request.user.get_full_name}}</h3>
+    <form method="post" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button>Update</button>
+    </form>
+</body>
+</html>
