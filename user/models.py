@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from core.models import TimeStampedModel
 # Create your models here.
 
-class UserProfile(models.Model):
+class UserProfile(TimeStampedModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='user_avatars/', null=True, blank=True)
     bio = models.TextField(null=True,blank=True)
