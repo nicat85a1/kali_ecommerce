@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
-
+from order.models import Order, Invoice
 # Create your views here.
 
 """def dashboard_view(request):
@@ -10,4 +10,9 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login_views')
 def dashboard_view(request):
-    return render(request, 'dashboard/dashboard.html')
+    orders = Order.objects.filter(user=request.user)
+   
+    context = {
+        'orders': orders,
+        }
+    return render(request, 'dashboard/dashboard.html', context)

@@ -51,6 +51,8 @@
         <h4>--------------------------------</h4>
         {%endif%}
         <br>
+        <a href="{% url 'create_order' instance.id 2 %}">Sifaris et</a>
+        <br>
         <a href="{% url 'detail_product' instance.id%}">more detail</a>
         <br>
         {%if user == instance.user%}

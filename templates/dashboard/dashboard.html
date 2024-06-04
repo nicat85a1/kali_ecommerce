@@ -9,5 +9,12 @@
     <h2>Dashboard</h2>
     <h3>Salam {{request.user.get_full_name}}</h3>
     <a href="{% url 'profile_view' %}">istifadeci profili</a>
+    <h2>Orders</h2>
+    {% for instance in orders %}
+    <p>{{instance.product.name}} - {{instance.quantity}}</p>
+    <h4>Invoice</h4>
+    <p>{{instance.invoice.price}} - {{instance.invoice.quantity}}</p>
+    <h4>-------------------------------------------</h4>
+    {% endfor %}
 </body>
 </html>

@@ -10,6 +10,10 @@ class Order(TimeStampedModel):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
 
+    def create_invoice(self):
+        Invoice.objects.create(order=self,quantity=self.quantity,price=self.product.price)
+
 class Invoice(TimeStampedModel):
     order = models.OneToOneField(Order, on_delete=models.CASCADE)
-    
+    quantity = models.PositiveIntegerField(default=1)
+    price = models.IntegerField(default=0)
