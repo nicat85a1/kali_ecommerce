@@ -14,14 +14,14 @@ def create_order(request, product_id,quantity):
         last_name = form.cleaned_data['last_name']
         phone = form.cleaned_data['phone']
         address = form.cleaned_data['address']
-        order = Order.objects.create(user=request.user,product_id=product_id, 
+        order = Order.objects.create(product_id=product_id, 
                                      quantity=quantity,first_name=first_name,
                                      last_name=last_name,phone=phone,address=address)
         invoice = order.create_invoice()
         product = Product.objects.get(id=product_id)
         stripe = Stripe()
         stripe.transaction(amount=product.price*quantity)
-        invoice.transaction_id = stripe.__transaction_id()
+        invoice.transaction_id = stripe.get_transaction_id()
         invoice.save()
         return redirect(stripe.get_payment_url())
 

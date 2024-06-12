@@ -8,7 +8,6 @@ class Stripe:
     def __init__(self):
         self.__payment_url = None
         self.__transaction_id = None
-        self.__payment_intent_id =None
         self.autenticate()
 
     def autenticate(self):
